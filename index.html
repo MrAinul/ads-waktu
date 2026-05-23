@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Watch Ads</title>
+
+<style>
+
+body{
+    background:#0f172a;
+    color:white;
+    font-family:Arial;
+    text-align:center;
+    padding-top:80px;
+}
+
+.box{
+    width:90%;
+    max-width:400px;
+    margin:auto;
+    background:#1e293b;
+    padding:30px;
+    border-radius:20px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:15px 25px;
+    background:#22c55e;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+#claim{
+    display:none;
+}
+
+.timer{
+    font-size:40px;
+    margin-top:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>🎥 WATCH ADS</h1>
+
+<p>
+Tonton iklan dan tunggu
+hingga timer selesai
+</p>
+
+<a
+class="btn"
+target="_blank"
+href="https://www.effectivecpmnetwork.com/gtpnpeipv?key=2b091a8f1c56e1e8e7ed621133f926c0"
+>
+🎥 OPEN ADS
+</a>
+
+<div class="timer" id="timer">
+15
+</div>
+
+<a
+class="btn"
+id="claim"
+href="https://t.me/NAMA_BOT_KAMU?start=claim"
+>
+✅ CLAIM REWARD
+</a>
+
+</div>
+
+<script>
+
+let time = 15;
+
+let active = true;
+
+document.addEventListener(
+'visibilitychange',
+function(){
+
+    if(document.hidden){
+        active = false;
+    }else{
+        active = true;
+    }
+
+});
+
+let timer = setInterval(()=>{
+
+    if(!active) return;
+
+    document.getElementById(
+        'timer'
+    ).innerHTML = time;
+
+    time--;
+
+    if(time < 0){
+
+        clearInterval(timer);
+
+        document.getElementById(
+            'claim'
+        ).style.display = 'inline-block';
+
+        document.getElementById(
+            'timer'
+        ).style.display = 'none';
+    }
+
+},1000);
+
+</script>
+
+</body>
+</html>
