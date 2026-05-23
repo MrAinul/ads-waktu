@@ -34,13 +34,15 @@ body{
     text-decoration:none;
     border-radius:10px;
     font-weight:bold;
+    cursor:pointer;
 }
 
 #claim{
     display:none;
 }
 
-.timer{
+#timer{
+    display:none;
     font-size:40px;
     margin-top:20px;
 }
@@ -55,26 +57,26 @@ body{
 <h1>🎥 WATCH ADS</h1>
 
 <p>
-Tonton iklan dan tunggu
-hingga timer selesai
+Klik tombol iklan terlebih dahulu
+agar timer dimulai
 </p>
 
-<a
+<button
 class="btn"
-target="_blank"
-href="https://www.effectivecpmnetwork.com/gtpnpeipv?key=2b091a8f1c56e1e8e7ed621133f926c0"
+onclick="startAds()"
+id="openBtn"
 >
 🎥 OPEN ADS
-</a>
+</button>
 
-<div class="timer" id="timer">
+<div id="timer">
 15
 </div>
 
 <a
 class="btn"
 id="claim"
-href="https://t.me/NAMA_BOT_KAMU?start=claim"
+href="https://t.me/PanenDuit_bot?start=claim"
 >
 ✅ CLAIM REWARD
 </a>
@@ -83,46 +85,71 @@ href="https://t.me/NAMA_BOT_KAMU?start=claim"
 
 <script>
 
-let time = 15;
+let started = false;
 
-let active = true;
+function startAds(){
 
-document.addEventListener(
-'visibilitychange',
-function(){
+    if(started) return;
 
-    if(document.hidden){
-        active = false;
-    }else{
-        active = true;
-    }
+    started = true;
 
-});
+    // OPEN ADSTERRA
 
-let timer = setInterval(()=>{
+    window.open(
+    'https://www.effectivecpmnetwork.com/gtpnpeipv?key=2b091a8f1c56e1e8e7ed621133f926c0',
+    '_blank'
+    );
 
-    if(!active) return;
+    document.getElementById(
+        'openBtn'
+    ).style.display = 'none';
 
     document.getElementById(
         'timer'
-    ).innerHTML = time;
+    ).style.display = 'block';
 
-    time--;
+    let time = 15;
 
-    if(time < 0){
+    let active = true;
 
-        clearInterval(timer);
+    document.addEventListener(
+    'visibilitychange',
+    function(){
 
-        document.getElementById(
-            'claim'
-        ).style.display = 'inline-block';
+        if(document.hidden){
+            active = false;
+        }else{
+            active = true;
+        }
+
+    });
+
+    let timer = setInterval(()=>{
+
+        if(!active) return;
 
         document.getElementById(
             'timer'
-        ).style.display = 'none';
-    }
+        ).innerHTML = time;
 
-},1000);
+        time--;
+
+        if(time < 0){
+
+            clearInterval(timer);
+
+            document.getElementById(
+                'claim'
+            ).style.display = 'inline-block';
+
+            document.getElementById(
+                'timer'
+            ).style.display = 'none';
+        }
+
+    },1000);
+
+}
 
 </script>
 
